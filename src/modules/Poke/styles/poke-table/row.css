@@ -1,0 +1,11 @@
+.poke-table-root .table-row {
+  display: grid;
+}
+
+.poke-table-root .body .table-row:nth-child(odd) {
+  background: var(--mantine-color-dark-8);
+}
+
+.poke-table-table .table-row:not(:last-child) {
+   border-bottom: 1px solid var(--mantine-color-default-border);
+}

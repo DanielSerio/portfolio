@@ -1,0 +1,62 @@
+.poke-table-container {
+  container-name: poke-table;
+  container-type: size;
+  max-width: 100%;
+  height: calc(100svh - 118px);
+}
+
+.poke-table-container,
+.poke-table-root,
+.poke-table-table {
+  overflow: hidden;
+}
+
+.poke-table-root,
+.poke-table-table,
+.poke-table-table .body {
+  position: relative;
+  height: 100%;
+}
+
+.poke-table-table header {
+  position: relative;
+  border-top: 1px solid var(--mantine-color-default-border);
+  border-bottom: 1px solid var(--mantine-color-default-border);
+}
+
+.poke-table-table header,
+.poke-table-table .body {
+  width: 100%;
+  max-width: 100svw;
+}
+
+.poke-table-table .body {
+  overflow-y: auto;
+}
+
+@container poke-table (max-width: 600px) {
+  .poke-table-root .poke-table-table .table-row,
+  .poke-table-root .poke-table-table .table-row .table-cell {
+    display: flex;
+  }
+
+  .poke-table-root .poke-table-table .table-row {
+    flex-direction: column;
+  }
+
+  .poke-table-root .poke-table-table header {
+    display: none;
+  }
+
+  .poke-table-root .poke-table-table .table-row .table-cell {
+    border-right: none;
+  }
+
+  .poke-table-root .poke-table-table .table-row .table-cell {
+    justify-content: space-between;
+  }
+
+  .poke-table-root .poke-table-table .table-row .table-cell .label {
+    display: inline-flex;
+  }
+}

@@ -1,0 +1,20 @@
+
+
+.poke-table-table .table-cell {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.875rem;
+  padding: 0 1ch;
+}
+
+.poke-table-table .table-cell .label {
+  display: none;
+}
+
+.poke-table-table .table-cell:not(:last-child) {
+  border-right: 1px solid var(--mantine-color-default-border);
+}
+
+.poke-table-table header {
+  padding-right: 14px;
+}

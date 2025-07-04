@@ -26,31 +26,33 @@ export function useListPokemon() {
     staleTime: Infinity,
   });
 
+  const columns = [
+    {
+      id: "id",
+      header: "ID",
+      size: 40,
+      accessorKey: "id",
+    },
+    {
+      id: "url",
+      header: "URL",
+      size: 240,
+      accessorKey: "url",
+    },
+    {
+      id: "name",
+      header: "Name",
+      size: 140,
+      accessorFn({ name }) {
+        return name.title;
+      },
+    },
+  ] satisfies CustomColumnDef<ExtendedPokemonType>[];
+
   const table = useReactTable({
     manualPagination: true,
     rowCount: count,
-    columns: [
-      {
-        id: "id",
-        header: "ID",
-        size: 40,
-        accessorKey: "id",
-      },
-      {
-        id: "url",
-        header: "URL",
-        size: 240,
-        accessorKey: "url",
-      },
-      {
-        id: "name",
-        header: "Name",
-        size: 240,
-        accessorFn({ name }) {
-          return name.title;
-        },
-      },
-    ] satisfies CustomColumnDef<ExtendedPokemonType>[],
+    columns,
     data: query.data ?? blank,
     getCoreRowModel: getCoreRowModel(),
   });
@@ -59,6 +61,7 @@ export function useListPokemon() {
     count,
     paging,
     table,
+    columns,
     query,
   };
 

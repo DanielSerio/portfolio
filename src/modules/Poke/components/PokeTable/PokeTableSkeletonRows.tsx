@@ -15,13 +15,13 @@ export function PokeTableSkeletonRows({
   return [...new Array(trueCount)].map((_, i) => (
     <PokeTableRow key={i + 1} gridTemplateColumns={gridTemplateColumns}>
       <PokeTableCell>
-        <Skeleton h={10} w="100%" />
+        <Skeleton h={10} w="100%" my={5} />
       </PokeTableCell>
       <PokeTableCell>
-        <Skeleton h={10} w="100%" />
+        <Skeleton h={10} w="100%" my={5} />
       </PokeTableCell>
       <PokeTableCell>
-        <Skeleton h={10} w="100%" />
+        <Skeleton h={10} w="100%" my={5} />
       </PokeTableCell>
     </PokeTableRow>
   ));
