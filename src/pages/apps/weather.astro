@@ -1,0 +1,12 @@
+---
+import Layout from "#core/layouts/Layout.astro";
+import TitleSection from "#core/layouts/TitleSection.astro";
+import WeatherModule from "#weather/module";
+---
+
+<Layout title="Dan Serio | Weather">
+  <TitleSection id="weatherTitle">
+    <h1>Weather</h1>
+  </TitleSection>
+  <WeatherModule client:only="react" />
+</Layout>

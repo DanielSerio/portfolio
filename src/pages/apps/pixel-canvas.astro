@@ -1,0 +1,12 @@
+---
+import Layout from "#core/layouts/Layout.astro";
+import TitleSection from "#core/layouts/TitleSection.astro";
+import PixelCanvasModule from "#pixel-canvas/module";
+---
+
+<Layout title="Dan Serio | Pixel Canvas">
+  <TitleSection id="pixelCanvasTitle">
+    <h1>Pixel Canvas</h1>
+  </TitleSection>
+  <PixelCanvasModule client:only="react" />
+</Layout>

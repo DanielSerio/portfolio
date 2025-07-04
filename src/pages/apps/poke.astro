@@ -1,0 +1,12 @@
+---
+import Layout from "#core/layouts/Layout.astro";
+import TitleSection from "#core/layouts/TitleSection.astro";
+import PokeModule from "#poke/module";
+---
+
+<Layout title="Dan Serio | Poke">
+  <TitleSection id="pokeTitle">
+    <h1>Poke</h1>
+  </TitleSection>
+  <PokeModule client:only="react" />
+</Layout>
