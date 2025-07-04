@@ -1,0 +1,40 @@
+#mainNav .menu-title {
+  font-style: normal;
+}
+
+#mainNav .menu-title,
+#mainNav .links > li {
+  padding: 3px 15px;
+}
+
+#mainNav .links {
+  border-top: 1px solid var(--mantine-color-default-border);
+  list-style: none;
+  margin: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#mainNav .links > li {
+  border-bottom: 1px solid var(--mantine-color-default-border);
+}
+
+#mainNav .links > li:hover a,
+#mainNav .links > li.active a {
+  opacity: 1;
+}
+
+#mainNav .links > li.active a {
+  color: var(--mantine-color-anchor);
+}
+
+#mainNav .links > li a:hover {
+  text-decoration: underline;
+}
+
+#mainNav .links a {
+  color: inherit;
+  opacity: 0.7;
+  text-decoration: none;
+}
