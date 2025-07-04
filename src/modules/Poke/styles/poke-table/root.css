@@ -2,7 +2,7 @@
   container-name: poke-table;
   container-type: size;
   max-width: 100%;
-  height: calc(100svh - 118px);
+  height: calc(100svh - 168px);
 }
 
 .poke-table-container,

@@ -18,3 +18,7 @@
 .poke-table-table header {
   padding-right: 14px;
 }
+
+.poke-table-table .body {
+  scrollbar-gutter: stable;
+}

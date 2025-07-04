@@ -1,11 +1,12 @@
+import { Box } from "@mantine/core";
 import { HeaderProviders } from "./Providers";
 
 export function Header() {
   return (
     <HeaderProviders>
-      <header id="header" className="header">
+      <Box component="header" id="header" className="header" h={48}>
         <div>Header</div>
-      </header>
+      </Box>
     </HeaderProviders>
   );
 }

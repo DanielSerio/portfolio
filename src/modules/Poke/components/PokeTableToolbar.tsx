@@ -48,7 +48,8 @@ export function PokeTableToolbar({
     <Flex p="xs" align="flex-end" justify="space-between">
       <Select
         size="xs"
-        label="Records Per Page"
+        label="Per Page"
+        className="rpp-select"
         defaultValue={"25"}
         data={["5", "10", "25", "50", "100", "250"]}
         onChange={(value) => {

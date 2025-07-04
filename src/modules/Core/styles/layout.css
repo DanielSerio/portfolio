@@ -1,0 +1,32 @@
+#layout {
+  min-height: 100svh;
+  padding-top: 48px;
+  padding-left: 48px;
+}
+
+#header,
+#sidebar {
+  position: fixed;
+  left: 0;
+  background: var(--mantine-color-body);
+}
+
+#header {
+  z-index: 2;
+  top: 0;
+  right: 0;
+  min-height: 48px;
+  border-bottom: 1px solid var(--mantine-color-default-border);
+}
+
+#sidebar {
+  z-index: 1;
+  top: 48px;
+  height: calc(100svh - 48px);
+  border-right: 1px solid var(--mantine-color-default-border);
+  width: 48px;
+}
+
+#sidebar.expanded {
+  width: 248px;
+}

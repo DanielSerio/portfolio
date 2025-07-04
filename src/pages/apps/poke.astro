@@ -8,6 +8,12 @@ import "#poke/styles/output/poke.css";
 <Layout title="Dan Serio | Poke">
   <TitleSection id="pokeTitle">
     <h1>Poke</h1>
+    <p>
+      A server-side paginated table using <a
+        href="https://tanstack.com/table/latest/docs/introduction"
+        >@tanstack/react-table</a
+      > and data from the <a href="https://pokeapi.co/docs/v2">PokeApi</a>.
+    </p>
   </TitleSection>
   <PokeModule client:only="react" />
 </Layout>

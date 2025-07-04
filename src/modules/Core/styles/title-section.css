@@ -1,0 +1,20 @@
+.title-section {
+  padding: 0 12px;
+  height: 120px;
+}
+
+.title-section h1,
+.title-section p {
+  margin: 0;
+}
+
+.title-section p {
+  font-size: 0.875rem;
+}
+
+.title-section h1 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
