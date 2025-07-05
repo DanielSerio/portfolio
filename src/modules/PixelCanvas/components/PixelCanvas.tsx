@@ -1,9 +1,12 @@
+import { PixelCanvasCanvas } from "./PixelCanvasCanvas";
+import { PixelCanvasForm } from "./PixelCanvasForm";
 import { PixelCanvasProviders } from "./Providers";
 
 export function PixelCanvas() {
   return (
     <PixelCanvasProviders>
-      <div>PixelCanvas</div>
+      <PixelCanvasForm />
+      <PixelCanvasCanvas />
     </PixelCanvasProviders>
   );
 }
