@@ -29,6 +29,7 @@ function useCursorState() {
 }
 
 interface RenderCursorProps {
+  force?: boolean;
   context: CanvasRenderingContext2D;
   cursorX: number;
   cursorY: number;
@@ -92,8 +93,8 @@ export function useRenderPixelCanvas({
   );
 
   const renderColor = useCallback(
-    ({ save, draw, context }: RenderCursorProps) => {
-      if (cursorPosition[0] && cursorIsDown) {
+    ({ save, draw, force, context }: RenderCursorProps) => {
+      if (cursorPosition[0] && (force || cursorIsDown)) {
         save(() => {
           draw(() => {
             context.fillStyle = state.color;
@@ -106,42 +107,49 @@ export function useRenderPixelCanvas({
     [state.diameter, state.color, cursorPosition]
   );
 
+  const render = (ev: MouseEvent, force?: boolean) => {
+    if (canvasCtx.current && cursorCanvasCtx.current) {
+      const context = canvasCtx.current;
+      const cursorContext = cursorCanvasCtx.current;
+      const canvas = canvasCtx.current.canvas!;
+      const rect = canvas.getBoundingClientRect();
+      const { save, draw } = getCanvasMethods(context);
+      const cursorX = ev.clientX - rect.left;
+      const cursorY = ev.clientY - rect.top;
+      const {
+        save: saveCursor,
+        draw: drawCursor,
+        clear,
+      } = getCanvasMethods(cursorContext);
+
+      setCursorPosition([cursorX, cursorY]);
+      renderCursor({
+        context: cursorContext,
+        cursorX,
+        cursorY,
+        save: saveCursor,
+        draw: drawCursor,
+        clear,
+      });
+      renderColor({
+        force,
+        context,
+        cursorX,
+        cursorY,
+        save,
+        draw,
+      });
+    }
+  };
+
   const canvasState = {};
   const canvasMethods = {
-    onMouseDown: () => setCursorIsDown(true),
-    onMouseUp: () => setCursorIsDown(false),
-    onMouseMove: (ev: MouseEvent) => {
-      if (canvasCtx.current && cursorCanvasCtx.current) {
-        const context = canvasCtx.current;
-        const cursorContext = cursorCanvasCtx.current;
-        const canvas = canvasCtx.current.canvas!;
-        const rect = canvas.getBoundingClientRect();
-        const { save, draw } = getCanvasMethods(context);
-        const cursorX = ev.clientX - rect.left;
-        const cursorY = ev.clientY - rect.top;
-        const {
-          save: saveCursor,
-          draw: drawCursor,
-          clear,
-        } = getCanvasMethods(cursorContext);
-        setCursorPosition([cursorX, cursorY]);
-        renderCursor({
-          context: cursorContext,
-          cursorX,
-          cursorY,
-          save: saveCursor,
-          draw: drawCursor,
-          clear,
-        });
-        renderColor({
-          context,
-          cursorX,
-          cursorY,
-          save,
-          draw,
-        });
-      }
+    onMouseDown: (ev: MouseEvent) => {
+      setCursorIsDown(true);
+      render(ev, true);
     },
+    onMouseUp: () => setCursorIsDown(false),
+    onMouseMove: (ev: MouseEvent) => render(ev),
     onMouseOut: () => {
       if (canvasCtx.current && cursorCanvasCtx.current) {
         const { clear } = getCanvasMethods(cursorCanvasCtx.current);
