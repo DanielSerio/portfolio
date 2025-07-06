@@ -3,7 +3,7 @@ import {
   type WeatherLocationInputMethod,
 } from "#weather/hooks";
 import { Box, Button, Flex, Tabs, Text, TextInput } from "@mantine/core";
-import { TbDatabase, TbLocation, TbTools } from "react-icons/tb";
+import { TbCrosshair, TbDatabase, TbLocation, TbTools } from "react-icons/tb";
 import { LocationSearch } from "./controls";
 
 export function WeatherForm() {
@@ -32,21 +32,31 @@ export function WeatherForm() {
           </Tabs.List>
 
           <Tabs.Panel value="lookup">
-            <LocationSearch
-              onSelect={(location) =>
-                console.info("selected location:", location)
-              }
-            />
+            <Box maw={240} mt="md">
+              <LocationSearch
+                onSelect={(location) =>
+                  console.info("selected location:", location)
+                }
+              />
+            </Box>
           </Tabs.Panel>
 
           <Tabs.Panel value="coordinates">
-            <Button rightSection={<TbLocation />}>Use My Location</Button>
+            <Button mt="md" rightSection={<TbLocation />}>
+              Use My Location
+            </Button>
           </Tabs.Panel>
 
           <Tabs.Panel value="manual">
-            <TextInput type="number" />
-            <TextInput type="number" />
-            <Button>Set Location</Button>
+            <Flex direction="column" mt="md" maw={240}>
+              <TextInput size="xs" type="number" label="Longitude" />
+              <TextInput size="xs" type="number" label="Latitude" />
+              <Flex mt="md">
+                <Button size="sm" rightSection={<TbCrosshair />}>
+                  Set Location
+                </Button>
+              </Flex>
+            </Flex>
           </Tabs.Panel>
         </Tabs>
       </Box>

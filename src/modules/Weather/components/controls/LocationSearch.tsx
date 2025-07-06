@@ -103,6 +103,7 @@ function LocationSearchComponent(
         <TextInput
           ref={ref}
           value={textFilter ?? ""}
+          placeholder="Search By City"
           onChange={(ev) => setTextFilter(ev.target.value)}
           onFocus={() => combobox.openDropdown()}
           onBlur={() => combobox.closeDropdown()}

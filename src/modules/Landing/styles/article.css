@@ -1,0 +1,14 @@
+.about-article {
+  max-width: calc(65ch + 48px);
+  width: calc(100% - 48px);
+  margin: 24px auto;
+}
+
+.about-article h1,
+.about-article h2,
+.about-article h3 {
+  font-weight: 400;
+  color: white;
+  font-synthesis-small-caps: auto;
+  font-variant: small-caps;
+}
