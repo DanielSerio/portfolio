@@ -12,7 +12,8 @@
       "#poke/*": ["src/modules/Poke/*"],
       "#weather/*": ["src/modules/Weather/*"],
       "#pixel-canvas/*": ["src/modules/PixelCanvas/*"],
-      "#store/*": ["src/store/*"]
+      "#store/*": ["src/store/*"],
+      "#e404/*": ["src/modules/E404/*"]
     }
   }
 }

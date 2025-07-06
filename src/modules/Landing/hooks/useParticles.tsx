@@ -7,7 +7,7 @@ import type {
   RecursivePartial,
 } from "@tsparticles/engine";
 
-export function useParticles() {
+export function useParticles(config?: { fullScreen?: boolean }) {
   const [init, setInit] = useState(false);
 
   // this should be run only once per application lifetime
@@ -26,19 +26,23 @@ export function useParticles() {
   }, []);
 
   const particlesLoaded = async (container?: Container) => {
-    console.log("\n");
-    console.log(`${"=".repeat(80)}`);
-    console.log("Whatcha doin in here?");
-    console.log("=".repeat(80));
-    console.log("\n");
+    if (!config) {
+      console.log("\n");
+      console.log(`${"=".repeat(80)}`);
+      console.log("Whatcha doin in here?");
+      console.log("=".repeat(80));
+      console.log("\n");
+    }
   };
 
   const options = useMemo<RecursivePartial<IOptions>>(
     () => ({
-      fullScreen: {
-        enable: false,
-        zIndex: 0,
-      },
+      fullScreen: config?.fullScreen
+        ? true
+        : {
+            enable: false,
+            zIndex: 0,
+          },
       fpsLimit: 100,
       particles: {
         color: {
