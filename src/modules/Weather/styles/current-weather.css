@@ -1,0 +1,27 @@
+.current-weather {
+  border-bottom: 1px solid var(--mantine-color-default-border);
+  display: grid;
+  place-content: center;
+  padding: 12px 0 36px;
+}
+
+.current-weather-container {
+  text-align: center;
+  width: max-content;
+  height: max-content;
+}
+
+.current-weather-container h1,
+.current-weather-container p {
+  margin: 0;
+}
+
+.current-weather-container h1 {
+  margin-bottom: -0.5rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+}
+
+.current-weather-container p {
+  margin-top: -1rem;
+}
