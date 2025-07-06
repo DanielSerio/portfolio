@@ -1,36 +1,17 @@
-import {
-  useWeatherLocationForm,
-  type WeatherLocationInputMethod,
-} from "#weather/hooks";
+import { useWeather, type WeatherLocationInputMethod } from "#weather/hooks";
 import { Box, Button, Flex, Tabs, Text, TextInput } from "@mantine/core";
 import { TbCrosshair, TbDatabase, TbLocation, TbTools } from "react-icons/tb";
 import { LocationSearch } from "./controls";
-import { getCurrentCoordinates } from "#weather/utilities";
-import { useCallback } from "react";
 
 export function WeatherForm() {
-  const {
-    methodController: [method, setMethod],
-    form,
-  } = useWeatherLocationForm();
-
-  const setFromWindowCoordinates = useCallback(async () => {
-    const coords = await getCurrentCoordinates();
-
-    form.setValues({
-      lat: +coords.lat.toFixed(4),
-      lng: +coords.lng.toFixed(4),
-    });
-  }, [form]);
-
-  const setFromLocationSearch = useCallback(
-    (location: { lat: number; lng: number; name: string }) =>
-      form.setValues({
-        lat: +location.lat.toFixed(4),
-        lng: +location.lng.toFixed(4),
-      }),
-    [form]
-  );
+  const [
+    { form, locationMethod: method },
+    {
+      setLocationMethod: setMethod,
+      setFromLocationSearch,
+      setFromWindowCoordinates,
+    },
+  ] = useWeather();
 
   const defaultTabProps = {
     h: 224,
@@ -52,14 +33,14 @@ export function WeatherForm() {
           onChange={(tab) => setMethod(tab as WeatherLocationInputMethod)}
         >
           <Tabs.List>
-            <Tabs.Tab value="lookup" leftSection={<TbDatabase />}>
-              Lookup
+            <Tabs.Tab size={"xs"} value="lookup" leftSection={<TbDatabase />}>
+              <Text size="xs">Lookup</Text>
             </Tabs.Tab>
             <Tabs.Tab value="coordinates" leftSection={<TbLocation />}>
-              Coordinates
+              <Text size="xs">Coordinates</Text>
             </Tabs.Tab>
             <Tabs.Tab value="manual" leftSection={<TbTools />}>
-              Manual
+              <Text size="xs">Manual</Text>
             </Tabs.Tab>
           </Tabs.List>
 

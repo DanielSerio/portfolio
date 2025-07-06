@@ -16,6 +16,7 @@ export function useWeatherLocationForm() {
   const methodController = useState<WeatherLocationInputMethod>("lookup");
   const form = useForm<{ lat: number; lng: number }>({
     validate: zodResolver(CoordinatesValidator),
+    mode: "uncontrolled",
   });
 
   return {

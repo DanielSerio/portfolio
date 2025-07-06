@@ -22,18 +22,21 @@ export function Hero() {
         <Box component="article" className="about-article" my={48}>
           <h1>Introduction</h1>
           <p>
-            Hi! I'm Dan Serio. I am a senior frontend software engineer with{" "}
+            Hi! I'm Dan Serio. I am a Senior Frontend Software Engineer with{" "}
             <strong>10+ years of experience</strong>. I currently live near
-            Cincinnati OH. With a background in graphic design, I provide a
+            Cincinnati, OH. With a background in graphic design, I provide a
             unique perspective on frontend development.
           </p>
           <h2>History</h2>
-          <p>I am originally from the northern suburbs of Chicago, IL.</p>
+          <p>
+            I am originally from the northern suburbs of Chicago, IL. I moved to
+            the Cincinnati area in 2021 to be closer to my now-wife.
+          </p>
           <p>
             Ever since I can remember, I have been obsessed with creating. My
             mother loves to tell the story of how when I was about 3 years old,
-            I drew a picture of a helicopter that was better than anything she
-            could draw.
+            I drew a picture of a helicopter that was better than anything that
+            she has drawn her entire life.
           </p>
           <h3>How I Became Interested In Development</h3>
           <p>

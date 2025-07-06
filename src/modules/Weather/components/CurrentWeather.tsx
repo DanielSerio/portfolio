@@ -1,10 +1,12 @@
 import { Box, Skeleton } from "@mantine/core";
 import type { PropsWithChildren } from "react";
 import { WeatherIcon } from "./WeatherIcon";
+import type { UseQueryResult } from "@tanstack/react-query";
+import type { WeatherResponse } from "#weather/types/weather.response";
+import { getWeatherDescriptionFromCode } from "#weather/utilities";
 
 export interface CurrentWeatherProps {
-  isNight?: boolean;
-  isLoading?: boolean;
+  query?: UseQueryResult<WeatherResponse, Error>;
 }
 
 const Wrapper = ({ children }: PropsWithChildren) => {
@@ -27,8 +29,11 @@ const CurrentWeatherSkeleton = () => {
   );
 };
 
-export function CurrentWeather({ isLoading }: CurrentWeatherProps) {
-  if (isLoading) {
+export function CurrentWeather({ query }: CurrentWeatherProps) {
+  const isLoading = query?.isLoading ?? false;
+  const data = query?.data;
+
+  if (isLoading || !data) {
     return (
       <Wrapper>
         <CurrentWeatherSkeleton />
@@ -36,15 +41,21 @@ export function CurrentWeather({ isLoading }: CurrentWeatherProps) {
     );
   }
 
+  const code = data.current.weather_code;
+  const description = getWeatherDescriptionFromCode(code);
+
   return (
     <Wrapper>
-      <h1>72*F</h1>
+      <h1>
+        {data.current.temperature_2m}
+        {data.current_units.temperature_2m}
+      </h1>
       <WeatherIcon
-        code={85}
+        code={code}
         style={{ fontSize: 96 }}
         fallback={<Skeleton h={68} w={68} mb="xs" />}
       />
-      <p>Sunny</p>
+      <p>{description}</p>
     </Wrapper>
   );
 }

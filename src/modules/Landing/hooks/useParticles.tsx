@@ -26,7 +26,11 @@ export function useParticles() {
   }, []);
 
   const particlesLoaded = async (container?: Container) => {
-    console.log(container);
+    console.log("\n");
+    console.log(`${"=".repeat(80)}`);
+    console.log("Whatcha doin in here?");
+    console.log("=".repeat(80));
+    console.log("\n");
   };
 
   const options = useMemo<RecursivePartial<IOptions>>(

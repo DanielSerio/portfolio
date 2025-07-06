@@ -3,10 +3,16 @@ import { Combobox, TextInput, useCombobox } from "@mantine/core";
 import { useDebouncedValue } from "@mantine/hooks";
 import {
   forwardRef,
+  useCallback,
+  useEffect,
   useState,
+  type ChangeEvent,
   type ForwardedRef,
+  type KeyboardEvent,
   type PropsWithChildren,
 } from "react";
+
+let timeout: NodeJS.Timeout;
 
 function useLocationSearch() {
   const combobox = useCombobox({
@@ -81,8 +87,32 @@ function LocationSearchComponent(
   }>,
   ref?: ForwardedRef<HTMLInputElement>
 ) {
-  const [{ combobox, options, textFilter }, { setTextFilter }] =
-    useLocationSearch();
+  const [
+    { combobox, options, textFilter, isLoading, query },
+    { setTextFilter },
+  ] = useLocationSearch();
+
+  const handleChange = useCallback(
+    (ev: ChangeEvent<HTMLInputElement>) => {
+      setTextFilter(ev.target.value);
+    },
+    [setTextFilter]
+  );
+
+  useEffect(() => {
+    console.info({
+      textFilter,
+      options,
+      isLoading,
+      queryData: query.data,
+    });
+
+    if (isLoading || (!isLoading && (query.data?.length ?? 0) > 0)) {
+      combobox.openDropdown();
+    } else if (!isLoading && (query.data?.length ?? 0) === 0) {
+      combobox.closeDropdown();
+    }
+  }, [query.data, isLoading, textFilter]);
 
   return (
     <Combobox
@@ -104,8 +134,12 @@ function LocationSearchComponent(
           ref={ref}
           value={textFilter ?? ""}
           placeholder="Search By City"
-          onChange={(ev) => setTextFilter(ev.target.value)}
-          onFocus={() => combobox.openDropdown()}
+          onChange={handleChange}
+          onFocus={() => {
+            if (options.length && options[0].lat !== null) {
+              combobox.openDropdown();
+            }
+          }}
           onBlur={() => combobox.closeDropdown()}
         />
       </Combobox.Target>
