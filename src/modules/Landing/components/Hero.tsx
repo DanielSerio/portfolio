@@ -19,7 +19,7 @@ export function Hero() {
       </Box>
 
       <TypographyStylesProvider>
-        <Box component="article" className="about-article" my={48}>
+        <Box component="article" className="about-article" mt={48} mb={96}>
           <h1>Introduction</h1>
           <p>
             Hi! I'm Dan Serio. I am a Senior Frontend Software Engineer with{" "}

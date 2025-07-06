@@ -5,16 +5,31 @@
 }
 
 #header,
-#sidebar {
+#sidebar,
+#footer {
   position: fixed;
   left: 0;
+}
+
+#header,
+#sidebar,
+#content {
   background: var(--mantine-color-body);
+}
+
+#header,
+#footer {
+  right: 0;
+}
+
+#content {
+  position: relative;
+  z-index: 1;
 }
 
 #header {
   z-index: 4;
   top: 0;
-  right: 0;
   min-height: 48px;
   border-bottom: 1px solid var(--mantine-color-default-border);
 }
@@ -30,4 +45,28 @@
 
 #sidebar.is-expanded {
   width: 248px;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 0;
+  height: 36px;
+  background: var(--mantine-color-dark-8);
+  border-top: 1px solid var(--mantine-color-dark-6);
+  display: grid;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 18px;
+  font-size: 0.875rem;
+  box-shadow: inset 0 4px 8px rgba(0,0,0, 0.2);
+}
+
+#footer > a {
+  color: var(--mantine-color-anchor);
+  text-decoration: none;
+}
+
+#footer > a:hover {
+  text-decoration: underline;
 }
