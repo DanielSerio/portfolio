@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master # Or the branch you want to deploy from
-  workflow_daspatch:
+  workflow_dispatch:
   # Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
