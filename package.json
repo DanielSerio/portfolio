@@ -6,8 +6,7 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "deploy": "npm run build && git subtree push --prefix dist origin gh-pages"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
