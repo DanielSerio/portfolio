@@ -99,14 +99,8 @@ function LocationSearchComponent(
     [setTextFilter]
   );
 
+  // effect to manage open state of dropdown items
   useEffect(() => {
-    console.info({
-      textFilter,
-      options,
-      isLoading,
-      queryData: query.data,
-    });
-
     if (isLoading || (!isLoading && (query.data?.length ?? 0) > 0)) {
       combobox.openDropdown();
     } else if (!isLoading && (query.data?.length ?? 0) === 0) {

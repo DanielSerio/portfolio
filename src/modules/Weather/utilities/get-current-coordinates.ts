@@ -16,6 +16,4 @@ export async function getCurrentCoordinates() {
 
     window.navigator.geolocation.getCurrentPosition(onSuccess, onError);
   });
-
-
 }
