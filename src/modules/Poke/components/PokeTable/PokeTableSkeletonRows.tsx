@@ -1,4 +1,3 @@
-import React from "react";
 import { PokeTableRow } from "./PokeTableRow";
 import { PokeTableCell } from "./PokeTableCell";
 import { Skeleton } from "@mantine/core";
